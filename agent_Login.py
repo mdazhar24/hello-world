@@ -1,0 +1,53 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+from selenium.webdriver.support.ui import Select
+y=webdriver.Firefox()
+y.get("http://www.yatragenie.com")
+time.sleep(30)
+y.find_element_by_id("yg_logintext").click()
+time.sleep(1)
+y.find_element_by_id("emailid1").send_keys('testagnet123')
+y.find_element_by_id("password1").send_keys('india123')
+y.find_element_by_id("loginSubmitButton").click()
+time.sleep(35)
+y.find_element_by_id("customer_drop").click()
+y.find_element_by_id("bustickets").click()
+time.sleep(5)
+y.find_element_by_id("fromCity").send_keys("BANGALORE")
+y.find_element_by_id("toCity").send_keys("NELLORE")
+y.find_element_by_id("departureDate").click()
+y.find_element_by_xpath("html/body/div[6]/div[1]/table/tbody/tr[4]/td[1]").click()
+
+time.sleep(1)
+y.find_element_by_xpath(".//*[@id='search']/div[6]/button[1]").click()
+time.sleep(60)
+y.find_element_by_xpath(".//*[@id='27']").click()
+time.sleep(15)
+y.find_element_by_xpath(".//*[@id='10_SS']").click()
+y.find_element_by_xpath(".//*[@id='boardingPointsSelect']").click()
+select = Select(y.find_element_by_xpath(".//*[@id='boardingPointsSelect']"))
+select.select_by_index(3)
+
+'''
+all_options = y.find_element_by_tag_name("option")
+for option in all_options:
+  print("Value is : %s" % option.get_attribute())
+  option.click()'''
+y.find_element_by_xpath(".//*[@id='dropOffPointsSelect']").click()
+select=Select(y.find_element_by_xpath(".//*[@id='dropOffPointsSelect']"))
+select.select_by_index(1)
+y.find_element_by_xpath(".//*[@id='continueButtonDiv']/button").click()
+time.sleep(20)
+y.find_element_by_xpath(".//*[@id='passengerName1']").send_keys("Test")
+select=Select(y.find_element_by_xpath(".//*[@id='gender1']"))
+select.select_by_index(2)
+time.sleep(2)
+y.find_element_by_xpath(".//*[@id='age1']").send_keys("2")
+y.find_element_by_xpath(".//*[@id='mobileNum']").send_keys("1234567890")
+y.find_element_by_xpath(".//*[@id='email']").send_keys("vasudha.chennareddy@gmail.com")
+y.find_element_by_xpath(".//*[@id='typeOfId']").click()
+select=Select(y.find_element_by_xpath(".//*[@id='typeOfId']"))
+select.select_by_index(2)
+y.find_element_by_xpath(".//*[@id='idCardNum']").send_keys("abcd")
+#y.find_element_by_xpath(".//*[@id='payByCashButtonId']").click()
